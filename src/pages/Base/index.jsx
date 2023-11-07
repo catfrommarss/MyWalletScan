@@ -322,7 +322,7 @@ function Base() {
                     item.base_eth_balance = balance;
                 }));
     
-                promisesQueue.push(() => getBineaERC20(address, apiKey).then(({USDbC, USDC}) => {
+                promisesQueue.push(() => getBaseERC20(address, apiKey).then(({USDbC, USDC}) => {
                     item.base_usdbc_balance = USDbC;
                     item.base_usdc_balance = USDC;
                 }));
@@ -897,7 +897,7 @@ function Base() {
                             let ethBalance = 0;
                             let baseEthBalance = 0;
                             let baseUsdcBalance = 0;
-                            let baseUSDbCBalance = 0;
+                            let baseUsdbcBalance = 0;
                             let totalFees = 0;
                             let avgTx = 0;
                             let avgDay = 0;
@@ -923,7 +923,7 @@ function Base() {
                                 ethBalance += Number(eth_balance);
                                 baseEthBalance += Number(base_eth_balance);
                                 baseUsdcBalance += Number(base_usdc_balance);
-                                baseusdbcBalance += Number(base_usdbc_balance);
+                                baseUsdbcBalance += Number(base_usdbc_balance);
                                 totalFees += Number(totalFee);
                                 avgTx += Number(base_tx_amount);
                                 avgDay += Number(dayActivity);
@@ -950,7 +950,7 @@ function Base() {
                                         <Table.Summary.Cell index={5}/>
                                         <Table.Summary.Cell index={8}>{baseEthBalance.toFixed(4)}</Table.Summary.Cell>
                                         <Table.Summary.Cell index={9}>{baseUsdcBalance.toFixed(2)}</Table.Summary.Cell>
-                                        <Table.Summary.Cell index={9}>{baseusdbcBalance.toFixed(2)}</Table.Summary.Cell>
+                                        <Table.Summary.Cell index={10}>{baseUsdbcBalance.toFixed(2)}</Table.Summary.Cell>
                                         <Table.Summary.Cell index={11}>-{avgTx.toFixed(0)}-</Table.Summary.Cell>
                                         {emptyCells}
                                         <Table.Summary.Cell index={17}>-{avgDay.toFixed(0)}-</Table.Summary.Cell>

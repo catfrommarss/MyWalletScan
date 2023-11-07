@@ -4,9 +4,10 @@ import { ethers } from 'ethers';
 
 async function getBaseBridge(address, apiKey) {
     try {
-        let url = `https://api.basescan.build/api?module=account&action=txlistinternal&address=${address}&startblock=0&endblock=99999999&sort=asc&apikey=${apiKey}`;
+        let url = `https://api.basescan.org/api?module=account&action=txlistinternal&address=${address}&startblock=0&endblock=99999999&sort=asc&apikey=${apiKey}`;
         const response = await axios.get(url);
         const transactions = response.data.result;
+        console.log(transactions);
         const bridgeTx = transactions.filter(item => item.from === "0x4200000000000000000000000000000000000007" && item?.value > 300000000000000);
         if (bridgeTx.length === 0) {
             return { l1Tol2Times: 0, l1Tol2Amount: 0 };
